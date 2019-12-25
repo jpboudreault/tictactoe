@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'game.apps.GameConfig',
+    'ai1.apps.Ai1Config',
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
 ]
