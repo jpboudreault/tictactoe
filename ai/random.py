@@ -5,10 +5,10 @@ from game.transients import Board
 
 
 class Random(Ai):
-    def get_name(self):
+    def name(self):
         return 'Random AI'
 
-    def play(self, board: Board, side):
+    def play(self, board: Board, player_side, opposing_side):
         possible_plays = []
         for i in range(9):
             if board.data[i] == ' ':

@@ -1,6 +1,15 @@
 import copy
 
 
+class Game:
+    def __init__(self, board, winner: str, player1: str, player2: str, plays):
+        self.board = board
+        self.player1 = player1
+        self.player2 = player2
+        self.winner = winner
+        self.plays = plays
+
+
 class Board:
     def __init__(self, data):
         self.data = copy.deepcopy(data)

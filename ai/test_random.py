@@ -17,9 +17,9 @@ class RandomAiTest(SimpleTestCase):
     def test_picks_random(self):
         data = sample_input()
         ai = Random()
-        move = ai.play(Board(data), 'x')
+        move = ai.play(Board(data), 'x', 'o')
         self.assertEquals(data[move], ' ')
 
     def test_get_name(self):
         ai = Random()
-        self.assertRegex(ai.get_name().upper(), '.*RANDOM.*')
+        self.assertRegex(ai.name().upper(), '.*RANDOM.*')

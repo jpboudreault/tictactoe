@@ -5,8 +5,9 @@ from abc import ABCMeta, abstractmethod
 class Ai:
     __metaclass__ = ABCMeta
 
+    @property
     @abstractmethod
-    def get_name(self): raise NotImplementedError
+    def name(self): raise NotImplementedError
 
     @abstractmethod
-    def play(self, board: Board, side): raise NotImplementedError
+    def play(self, board: Board, player_side, opposing_side): raise NotImplementedError
