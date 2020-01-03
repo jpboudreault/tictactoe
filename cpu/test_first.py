@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 
-from ai.random import Random
+from cpu.first import First
 from game.transients import Board
 
 
@@ -12,14 +12,14 @@ def sample_input():
     ]
 
 
-class RandomAiTest(SimpleTestCase):
+class FirstAiTest(SimpleTestCase):
 
-    def test_picks_random(self):
+    def test_picks_first(self):
         data = sample_input()
-        ai = Random()
+        ai = First()
         move = ai.play(Board(data), 'x', 'o')
-        self.assertEquals(data[move], ' ')
+        self.assertEquals(move, 2)
 
     def test_get_name(self):
-        ai = Random()
-        self.assertRegex(ai.name().upper(), '.*RANDOM.*')
+        ai = First()
+        self.assertRegex(ai.name().upper(), '.*1ST.*')

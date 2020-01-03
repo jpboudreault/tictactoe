@@ -1,10 +1,10 @@
 import random
 
-from ai.ai import Ai
+from cpu.cpu import Cpu
 from game.transients import Board
 
 
-class First(Ai):
+class First(Cpu):
     def name(self):
         return '1st Ai'
 

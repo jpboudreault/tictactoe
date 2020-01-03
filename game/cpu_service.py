@@ -1,7 +1,7 @@
-from ai.center import Center
-from ai.first import First
-from ai.random import Random
-from ai.xavier import Xavier
+from cpu.center import Center
+from cpu.first import First
+from cpu.random import Random
+from cpu.xavier import Xavier
 
 
 class CpuService:

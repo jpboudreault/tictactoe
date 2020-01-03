@@ -1,10 +1,10 @@
 import random
 
-from ai.ai import Ai
+from cpu.cpu import Cpu
 from game.transients import Board
 
 
-class Random(Ai):
+class Random(Cpu):
     def name(self):
         return 'Random AI'
 

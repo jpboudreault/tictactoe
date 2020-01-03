@@ -1,8 +1,8 @@
-from ai.ai import Ai
+from cpu.cpu import Cpu
 from game.transients import Board
 
 
-class Xavier(Ai):
+class Xavier(Cpu):
     def name(self):
         return 'Xavier''s AI 1.0'
 

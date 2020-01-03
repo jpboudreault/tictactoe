@@ -2,7 +2,7 @@ from game.transients import Board
 from abc import ABCMeta, abstractmethod
 
 
-class Ai:
+class Cpu:
     __metaclass__ = ABCMeta
 
     @property
