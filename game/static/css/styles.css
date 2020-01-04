@@ -1,3 +1,9 @@
 main > .container {
   padding: 60px 15px 0;
 }
+.blue {
+    color: #66ccff
+}
+.red {
+    color: #ff6699
+}
