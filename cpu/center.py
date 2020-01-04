@@ -1,7 +1,7 @@
 import random
 
 from cpu.cpu import Cpu
-from game.transients import Board
+from game.transients import Board, Line
 
 
 class Center(Cpu):
@@ -10,37 +10,43 @@ class Center(Cpu):
 
     def play(self, board: Board, player_side, opposing_side):
         # pick any spot that win
-        for line in board.get_lines():
-            matches = self.find_matching_positions(board.data, line.get_positions(), player_side)
-            if len(matches) == 2 and not line.is_filled():
-                return [item for item in line.get_positions() if item not in matches][0]
+        winning_position = self.find_winning_position(board, player_side)
+        if winning_position:
+            return winning_position
 
         # pick any spot that would make the opponent win
-        for line in board.get_lines():
-            matches = self.find_matching_positions(board.data, line.get_positions(), opposing_side)
-            if len(matches) == 2 and not line.is_filled():
-                return [item for item in line.get_positions() if item not in matches][0]
+        losing_position = self.find_winning_position(board, opposing_side)
+        if losing_position:
+            return losing_position
 
         # pick middle
         if board.data[4] == ' ':
             return 4
 
         # pick corners first!
-        possible_plays = self.find_matching_positions(board.data, [0, 2, 6, 8], ' ')
-        if possible_plays:
-            return random.choice(possible_plays)
+        possible_moves = self.find_matching_positions(board.data, [0, 2, 6, 8], ' ')
+        if possible_moves:
+            return random.choice(possible_moves)
 
         # pick any open spot left!
-        possible_plays = self.find_matching_positions(board.data, [2, 3, 5, 7], ' ')
-        if possible_plays:
-            return random.choice(possible_plays)
+        possible_moves = self.find_matching_positions(board.data, [1, 3, 5, 7], ' ')
+        if possible_moves:
+            return random.choice(possible_moves)
 
-        raise RuntimeError("Unreachable code")
+        raise RuntimeError('Nothing to play in board: %s' % board.data)
 
-    def find_matching_positions(self, data, positions, value_to_match):
+    def find_winning_position(self, board: Board, side_to_match):
+        for line in board.get_lines():
+            if not line.is_filled():
+                matches = self.find_matching_positions(board.data, line.get_positions(), side_to_match)
+                if len(matches) == 2:
+                    return [item for item in line.get_positions() if item not in matches][0]
+        return None
+
+    def find_matching_positions(self, data, positions, side_to_match):
         matches = []
         for p in positions:
-            if data[p] == value_to_match:
+            if data[p] == side_to_match:
                 matches.append(p)
 
         return matches
