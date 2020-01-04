@@ -1,13 +1,25 @@
 import random
 
-from django.http import HttpResponse
 from django.http import JsonResponse
+from django.shortcuts import render
+
 from game.cpu_service import CpuService
 from game.transients import Board
 
 
 def index(request):
-    return HttpResponse("Hi, welcome to the tic tac toe game")
+    context = {
+        'num_books': 1,
+        'num_instances': 2,
+        'num_instances_available': 3,
+        'num_authors': 4,
+    }
+
+    return render(request, 'index.html', context)
+
+
+def rules(request):
+    return render(request, 'rules.html')
 
 
 def simulation(request):
@@ -17,32 +29,32 @@ def simulation(request):
 
     data = [' '] * 9
     moves = []
-    player = random.choice([cpu1, cpu2])
+    first_player = random.choice([cpu1, cpu2])
 
     while True:
         board = Board(data)
         if board.is_game_over():
             if board.get_winner() == 'x':
-                print("> Game over! Winner is %s <" % cpu1.name())
+                print('> Game over! Winner is %s <' % cpu1.name())
             else:
-                print("> Game over! Winner is %s <" % cpu2.name())
+                print('> Game over! Winner is %s <' % cpu2.name())
 
-            print("History: %s" % moves)
+            print('History: %s' % moves)
             break
 
-        if player == cpu2:
-            player = cpu1
+        if len(moves) % 2 == 0:
+            player = first_player
             side = 'x'
             other_side = 'o'
         else:
-            player = cpu2
+            player = [value for value in [cpu1, cpu2] if value not in [first_player]][0]
             side = 'o'
             other_side = 'x'
 
         move = player.play(board, side, other_side)
 
         if data[move] != ' ':
-            raise Exception('Illegal move from %s, history: %s'.format((player.name(), moves)))
+            raise Exception('Illegal move from %s, history: %s' % (player.name(), moves))
 
         data[move] = side
         moves.append(move)
