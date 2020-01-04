@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap4',
     'game.apps.GameConfig',
     'cpu.apps.CpuConfig',
     'django.contrib.auth',

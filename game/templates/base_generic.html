@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+{% load bootstrap4 %}
+
+    <html lang="fr">
+    <head>
+        {% block title %}<title>Tic Tac X</title>{% endblock %}
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    </head>
+    <body>
+        <header>
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Tic Tac X</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Regles<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Jouer</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+        <main role="main" class="container">
+            {% bootstrap_messages %}
+
+            {% block sidebar %}<!-- insert default navigation text for every page --> {% endblock %}
+            {% block content %}<!-- to be replaced --> {% endblock %}
+        </main>
+
+        <!-- https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/ -->
+
+        <footer class="footer">
+          <div class="container">
+            <span class="text-muted">Fait par Jean-Philippe Boudreault et Xavier. </span>
+          </div>
+        </footer>
+
+        {# Load CSS and JavaScript #}
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>
