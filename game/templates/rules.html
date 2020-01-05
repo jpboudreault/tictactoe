@@ -2,7 +2,14 @@
 
 {% block content %}
   <h1>Les r&egrave;gles</h1>
-<p>Deux joueurs s'affrontent. Ils doivent remplir chacun &agrave; leur tour une case de la grille avec le symbole qui leur est attribu&eacute; : O ou X. Le gagnant est celui qui arrive &agrave; aligner trois symboles identiques, horizontalement, verticalement ou en diagonale. Dans TIC TAC T<span class="red">O</span>E <span class="blue">X</span>, le joueur avec les X effectue le premier coup de la partie.</p>
+<p>Deux joueurs s'affrontent. Ils doivent remplir chacun &agrave; leur tour une case de la grille avec
+  le symbole qui leur est attribu&eacute; : O ou X. Le gagnant est celui qui arrive &agrave; aligner
+  trois symboles identiques, horizontalement, verticalement ou en diagonale.
+  Dans TIC TAC T<span class="o">O</span>E <span class="x">X</span>, le joueur avec les X effectue le premier coup de la partie.</p>
   <p>Le programmeur Xavier affirme que son ordinateur est imbattable.</p>
   <p><a href="{% url 'play' %}">Accepter et jouer</a></p>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>$(function() { setActiveMenu("rules"); });</script>
 {% endblock %}

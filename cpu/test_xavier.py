@@ -38,4 +38,14 @@ class RandomAiTest(SimpleTestCase):
         ]
         cpu = Xavier()
         move = cpu.play(Board(data), 'x', 'o')
-        # self.assertEquals(move, 6)
+        self.assertEquals(move, 6)
+
+    def test_picks_another_corner_in_3(self):
+        data = [
+            'x', ' ', ' ',
+            ' ', ' ', ' ',
+            ' ', ' ', 'o',
+        ]
+        cpu = Xavier()
+        move = cpu.play(Board(data), 'x', 'o')
+        self.assertEquals(move, 6)

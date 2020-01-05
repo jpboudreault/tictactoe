@@ -12,21 +12,18 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand">Tic Tac T<span class="red">o</span>e <span class="blue">X</span></span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-brand">Tic Tac T<span class="o">o</span>e <span class="x">X</span></span>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'rules' %}">R&egrave;gles<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'play' %}">Jouer</a>
-                    </li>
-                    <li class="nav-item">
+                    {% url rules as rules_url %}
+                    <li class="nav-item" data="about">
                         <a class="nav-link" href="{% url 'about' %}">&Agrave; propos</a>
+                    </li>
+                    <li class="nav-item" data="rules">
+                        <a class="nav-link" href="{% url 'rules' %}">R&egrave;gles</a>
+                    </li>
+                    <li class="nav-item" data="play">
+                        <a class="nav-link" href="{% url 'play' %}">Jouer</a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +47,9 @@
 </footer>
 
 {# Load CSS and JavaScript #}
-{% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
+{% bootstrap_css %}
+<script type="text/javascript" src="{% static 'script/base.js' %}"></script>
+{% block extra_scripts %}<!-- to be replaced --> {% endblock %}
 </body>
 </html>

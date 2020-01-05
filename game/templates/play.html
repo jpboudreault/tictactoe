@@ -1,6 +1,30 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>En Construction</h1>
-  <p>Merci pour votre patience</p>
+<h1>En Construction</h1>
+<div class="container">
+    <div class="row">
+        <div class="cell" id="0">0</div>
+        <div class="cell" id="1">1</div>
+        <div class="cell" id="2">2</div>
+    </div>
+    <div class="row">
+        <div class="cell" id="3">3</div>
+        <div class="cell" id="4">4</div>
+        <div class="cell" id="5">5</div>
+    </div>
+    <div class="row">
+        <div class="cell" id="6">6</div>
+        <div class="cell" id="7">7</div>
+        <div class="cell" id="8">8</div>
+    </div>
+    <div class="hline line1"></div>
+    <div class="hline line2"></div>
+    <div class="vline line3"></div>
+    <div class="vline line4"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>$(function() { setActiveMenu("play"); });</script>
 {% endblock %}

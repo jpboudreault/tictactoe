@@ -1,14 +1,59 @@
 main > .container {
   padding: 60px 15px 0;
 }
-.blue {
-    color: #66ccff;
-}
-.red {
-    color: #ff6699;
-}
 .navbar-brand {
     text-transform: uppercase;
     font-size: 2rem;
 }
-
+.x {
+    color: #66ccff;
+}
+.o {
+    color: #ff6699;
+}
+/* https://codepen.io/joshuahenson/pen/LGpVaP */
+.container {
+/*  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; */
+  width: 450px;
+  height: 450px;
+  margin: auto;
+}
+.row {
+  height: 150px;
+}
+.cell {
+  width: 150px;
+  height: 150px;
+}
+.hline {
+	position: absolute;
+    height: 5px;
+    width: 440px;
+	border-radius: 50px;
+	background-color: #000000;
+}
+.line1 {
+    top: 147.5px;
+}
+.line2 {
+  bottom: 147.5px;
+}
+.vline {
+  width: 5px;
+  height: 440px;
+  top: 5px;
+	border-radius: 50px;
+	background-color: #000000;
+}
+.line3 {
+  left: 147.5px;
+	left: 29.5vmin;
+}
+.line4 {
+  right: 147.5px;
+  right: 29.5vmin;
+}
