@@ -38,6 +38,10 @@ class GameTest(SimpleTestCase):
         self.assertEqual(diagonals[1].get_data(), [' ', ' ', 'o'])
         self.assertEqual(diagonals[1].get_positions(), [2, 4, 6])
 
+    def test_played_moves_count(self):
+        played_moves = Board(sample_input()).played_moves_count()
+        self.assertEqual(played_moves, 5)
+
     def test_get_lines(self):
         tuples = Board(sample_input()).get_lines()
         self.assertEqual(len(tuples), 8)

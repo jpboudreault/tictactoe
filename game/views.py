@@ -7,15 +7,12 @@ from game.cpu_service import CpuService
 from game.transients import Board
 
 
-def index(request):
-    context = {
-        'num_books': 1,
-        'num_instances': 2,
-        'num_instances_available': 3,
-        'num_authors': 4,
-    }
+def about(request):
+    return render(request, 'about.html')
 
-    return render(request, 'index.html', context)
+
+def play(request):
+    return render(request, 'play.html')
 
 
 def rules(request):

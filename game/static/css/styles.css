@@ -2,8 +2,13 @@ main > .container {
   padding: 60px 15px 0;
 }
 .blue {
-    color: #66ccff
+    color: #66ccff;
 }
 .red {
-    color: #ff6699
+    color: #ff6699;
 }
+.navbar-brand {
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+

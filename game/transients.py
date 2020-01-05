@@ -37,6 +37,10 @@ class Board:
     def get_lines(self):
         return [] + self.get_rows() + self.get_columns() + self.get_diagonals()
 
+    def played_moves_count(self):
+        # xavier je te conseille d'utiliser ceci https://stackoverflow.com/questions/2600191/how-can-i-count-the-occurrences-of-a-list-item
+        return 1
+
     def get_winner(self):
         for line in self.get_lines():
             if line.get_winner() is not None:

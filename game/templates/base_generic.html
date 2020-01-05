@@ -4,7 +4,7 @@
 
 <html lang="fr" class="h-100">
 <head>
-    {% block title %}<title>Tic Tac X</title>{% endblock %}
+    {% block title %}<title>Tic Tac Toe X</title>{% endblock %}
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
@@ -12,7 +12,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tic Tac T<span class="red">o</span>e <span class="blue">x</span></a>
+            <span class="navbar-brand">Tic Tac T<span class="red">o</span>e <span class="blue">X</span></span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,10 +20,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">R&egrave;gles<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'rules' %}">R&egrave;gles<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Jouer</a>
+                        <a class="nav-link" href="{% url 'play' %}">Jouer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">&Agrave; propos</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +45,7 @@
 
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-        <span class="text-muted">Fait par Jean-Philippe et Xavier B. </span>
+        <span class="text-muted">Fait par Jean-Philippe et Xavier Boudreault</span>
     </div>
 </footer>
 
