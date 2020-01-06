@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-{% load static %}
-{% load bootstrap4 %}
-
 <html lang="fr" class="h-100">
 <head>
     {% block title %}<title>Tic Tac Toe X</title>{% endblock %}
+    {% load static %}
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body class="d-flex flex-column h-100">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand">Tic Tac T<span class="o">o</span>e <span class="x">X</span></span>
+            <a class="navbar-brand" href="#">Tic Tac T<span class="o">o</span>e <span class="x">X</span></a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     {% url rules as rules_url %}
@@ -33,10 +30,8 @@
 
 <main role="main" class="flex-shrink-0">
     <div class="container">
-    {% bootstrap_messages %}
-
-    {% block sidebar %}<!-- insert default navigation text for every page --> {% endblock %}
-    {% block content %}<!-- to be replaced --> {% endblock %}
+        {% block sidebar %}<!-- insert default navigation text for every page --> {% endblock %}
+        {% block content %}<!-- to be replaced --> {% endblock %}
     </div>
 </main>
 
@@ -47,8 +42,10 @@
 </footer>
 
 {# Load CSS and JavaScript #}
+{% load bootstrap4 %}
 {% bootstrap_javascript jquery='full' %}
 {% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <script type="text/javascript" src="{% static 'script/base.js' %}"></script>
 {% block extra_scripts %}<!-- to be replaced --> {% endblock %}
 </body>
