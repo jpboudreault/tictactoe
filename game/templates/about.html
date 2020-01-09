@@ -1,12 +1,21 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1 class="mt-5">&Agrave; propos</h1>
-  <p class="lead">Ce projet est le fruit de la collaboration d'un papa et de son fils. Il a servi a apprendre la programmation et le language Python.
-    Il a ete pr&eacute;sent&eacute; &agrave; une classe de 5e ann&eacute;e </p>
-  <p><a href="https://github.com/jpboudreault/tictactoe">Voir le code (sur github)</a></p>
+    <h1 class="mt-5">&Agrave; propos</h1>
+    <p class="lead">Ce projet est le fruit de la collaboration d'un papa et de son fils. Il a servi a apprendre la
+        programmation et le language Python.
+        Il a ete pr&eacute;sent&eacute; &agrave; une classe de 5e ann&eacute;e.</p>
+    <ul>
+        <li><a href="{% url 'rules' %}">Voir les r&egrave;gles du jeu</a></li>
+        <li><a href="https://github.com/jpboudreault/tictactoe">Voir le code sur GitHub</a></li>
+    </ul>
+    <p>Voir &eacute;galement un petit jeu en Scratch avec de la programmation par block.</p>
+    <p><a href="https://studio.code.org/projects/flappy/JfkO0omPJFc4ZZGGPbepDTOeuOIpuXsOrllLT0HAoaY">Jouer au projet
+        Scratch sur code.org</a></p>
 {% endblock %}
 
 {% block extra_scripts %}
-<script>$(function() { setActiveMenu("about"); });</script>
+    <script>$(function () {
+        setActiveMenu("about");
+    });</script>
 {% endblock %}
