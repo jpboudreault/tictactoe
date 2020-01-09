@@ -2,21 +2,23 @@
 
 {% block content %}
     <h1 class="mt-5">Jouer &agrave; TIC TAC T<span class="o">O</span>E <span class="x">X</span></h1>
-    <div class="row">
+    <div class="row pt-4">
         <div class="col-1">
             <button type="button" class="btn btn-primary co">Jouer</button>
         </div>
+        <div class="col-1 text-right">
+            <span class="col1">CPU:</span>
+        </div>
         <div class="col-2">
             <select class="custom-select">
-                <option selected>CPU</option>
+                <option value="center"selected>Centre</option>
                 <option value="rand">Hazard</option>
-                <option value="center">Centre</option>
                 <option value="xavier">Xavier</option>
             </select>
         </div>
     </div>
 
-    <div class="grid-container lead">
+    <div class="grid-container lead pt-4">
         <div class="cell row1 col1" id="cell-0">0</div>
         <div class="cell row1 col2" id="cell-1">1</div>
         <div class="cell row1 col3" id="cell-2">2</div>

@@ -19,8 +19,7 @@ main > .container {
 .cell {
     text-align: center;
     max-height: 150px;
-    /*padding-top: 100%;*/
-    /*position: relative;*/
+    height: 150px;
 }
 .line{
     border-radius: 25px;
