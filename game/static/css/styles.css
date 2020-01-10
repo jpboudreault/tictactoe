@@ -1,6 +1,9 @@
 main > .container {
   padding: 60px 15px 0;
 }
+p {
+    text-align: justify;
+}
 .navbar-brand {
     text-transform: uppercase;
     font-size: 2rem;
@@ -11,6 +14,8 @@ main > .container {
 .o {
     color: #ff6699;
 }
+
+/* Related to the game */
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -18,8 +23,55 @@ main > .container {
 }
 .cell {
     text-align: center;
-    max-height: 150px;
+    width: 150px;
     height: 150px;
+}
+
+.cell.x:before {
+    /* this is a mess and not working */
+    position: absolute;
+    top: 0;
+    left: 75px;
+    left: 15vmin;
+    content: "";
+    display: block;
+    width: 7px;
+    width: 1.5vmin;
+    height: 150px;
+    height: 30vmin;
+    background-color: #10A0E1;
+    border-radius: 5px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.cell.x:after {
+    /* this is a mess and not working */
+    position: absolute;
+    top: 0;
+    left: 75px;
+    left: 15vmin;
+    content: "";
+    display: block;
+    width: 7px;
+    width: 1.5vmin;
+    height: 150px;
+    height: 30vmin;
+    background-color: #10A0E1;
+    border-radius: 5px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.cell.o {
+    /* this is a mess and not working */
+    top: 15px;
+    left: 15px;
+    width: 120px;
+    height: 120px;
+    border: 8px solid #ff6699;
+    border-radius: 50%;;
 }
 .line{
     border-radius: 25px;

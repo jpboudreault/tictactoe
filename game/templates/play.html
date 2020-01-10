@@ -2,36 +2,39 @@
 
 {% block content %}
     <h1 class="mt-5">Jouer &agrave; TIC TAC T<span class="o">O</span>E <span class="x">X</span></h1>
-    <div class="row pt-4">
-        <div class="col-1">
-            <button type="button" class="btn btn-primary co">Jouer</button>
+    <div class="row lead pt-4">
+        <div class="col-9">
+            <div class="grid-container">
+                <div class="cell row1 col1" id="cell-0">0</div>
+                <div class="cell row1 col2" id="cell-1">1</div>
+                <div class="cell row1 col3" id="cell-2">2</div>
+                <div class="cell row2 col1 x" id="cell-3">3</div>
+                <div class="cell row2 col2" id="cell-4">4</div>
+                <div class="cell row2 col3 o" id="cell-5">5</div>
+                <div class="cell row3 col1" id="cell-6">6</div>
+                <div class="cell row3 col2" id="cell-7">7</div>
+                <div class="cell row3 col3" id="cell-8">8</div>
+                <div class="line hline" id="line-1"></div>
+                <div class="line hline" id="line-2"></div>
+                <div class="line vline" id="line-3"></div>
+                <div class="line vline" id="line-4"></div>
+            </div>
         </div>
-        <div class="col-1 text-right">
-            <span class="col1">CPU:</span>
+        <div class="col-3">
+            <div class="row">
+                <span>Ordinateur:</span>
+            </div>
+            <div class="row pt-2">
+                <select class="custom-select">
+                    <option value="center" selected>Centre</option>
+                    <option value="rand">Hazard</option>
+                    <option value="xavier">Xavier</option>
+                </select>
+            </div>
+            <div class="row pt-4">
+                <button type="button" class="btn btn-primary co">Jouer</button>
+            </div>
         </div>
-        <div class="col-2">
-            <select class="custom-select">
-                <option value="center"selected>Centre</option>
-                <option value="rand">Hazard</option>
-                <option value="xavier">Xavier</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="grid-container lead pt-4">
-        <div class="cell row1 col1" id="cell-0">0</div>
-        <div class="cell row1 col2" id="cell-1">1</div>
-        <div class="cell row1 col3" id="cell-2">2</div>
-        <div class="cell row2 col1" id="cell-3">3</div>
-        <div class="cell row2 col2" id="cell-4">4</div>
-        <div class="cell row2 col3" id="cell-5">5</div>
-        <div class="cell row3 col1" id="cell-6">6</div>
-        <div class="cell row3 col2" id="cell-7">7</div>
-        <div class="cell row3 col3" id="cell-8">8</div>
-        <div class="line hline" id="line-1"></div>
-        <div class="line hline" id="line-2"></div>
-        <div class="line vline" id="line-3"></div>
-        <div class="line vline" id="line-4"></div>
     </div>
 {% endblock %}
 
