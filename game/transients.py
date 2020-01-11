@@ -31,14 +31,14 @@ class Board:
     def played_moves_count(self):
         return 9 - self.data.count(' ')
 
-    def get_winner(self):
+    def get_winning_side(self):
         for line in self.get_lines():
             if line.get_winner() is not None:
                 return line.get_winner()
         return None
 
     def is_game_over(self):
-        if self.get_winner() is not None:
+        if self.get_winning_side() is not None:
             return True
         if all(r.is_filled() for r in self.get_rows()):
             return True

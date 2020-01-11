@@ -53,7 +53,7 @@ class GameTest(SimpleTestCase):
         self.assertTrue(Board(all_x).is_game_over())
 
     def test_get_winner(self):
-        self.assertEquals(Board(sample_input()).get_winner(), None)
+        self.assertEquals(Board(sample_input()).get_winning_side(), None)
 
         all_x = ['x'] * 9
-        self.assertEquals(Board(all_x).get_winner(), 'x')
+        self.assertEquals(Board(all_x).get_winning_side(), 'x')
