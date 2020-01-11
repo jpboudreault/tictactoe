@@ -19,59 +19,21 @@ p {
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    max-width: 450px;
+    /*max-width: 450px;*/
 }
 .cell {
     text-align: center;
-    width: 150px;
-    height: 150px;
+    width: 20vh;
+    height: 20vh;
+    font-size: 18vh;
 }
-
-.cell.x:before {
-    /* this is a mess and not working */
-    position: absolute;
-    top: 0;
-    left: 75px;
-    left: 15vmin;
-    content: "";
-    display: block;
-    width: 7px;
-    width: 1.5vmin;
-    height: 150px;
-    height: 30vmin;
-    background-color: #10A0E1;
-    border-radius: 5px;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+.cell:hover {
+    cursor: pointer;
 }
-
-.cell.x:after {
-    /* this is a mess and not working */
-    position: absolute;
-    top: 0;
-    left: 75px;
-    left: 15vmin;
-    content: "";
-    display: block;
-    width: 7px;
-    width: 1.5vmin;
-    height: 150px;
-    height: 30vmin;
-    background-color: #10A0E1;
-    border-radius: 5px;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+.cell.x>span {
 }
-.cell.o {
-    /* this is a mess and not working */
-    top: 15px;
-    left: 15px;
-    width: 120px;
-    height: 120px;
-    border: 8px solid #ff6699;
-    border-radius: 50%;;
+.cell.o>span {
+    font-size: 18vh;
 }
 .line{
     border-radius: 25px;
