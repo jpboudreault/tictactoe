@@ -1,2 +1,2 @@
 # tictactoe
-Python project for a kids tic tac toe game
+Python project for my kid's tic tac toe game
