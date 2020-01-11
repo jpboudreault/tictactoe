@@ -16,15 +16,18 @@ function startGame() {
         .removeClass('o')
         .html('');
 
-    let cpu = $('')
-    $.post( 'api/games', { cpu1: 'center' })
+    let cpu = $('#game-cpu').val();
+    // server will decide if the player makes the first move 'x' or not
+    $.post( 'api/games', { cpu1: cpu })
       .done(function( data ) {
         gameId = data['id'];
-        console.dir(data);
+        data['moves'].forEach(function (move, index) {
+            let side = index % 2 == 0 ? 'x' : 'o';
+            $(`[id^=cell-${move}]`)
+                .addClass(side)
+                .html(side);
+        });
       });
-
-    // todo contact server to start the game
-    // server will decide if the player makes the first move 'x' or not
 }
 
 function playMove(cell, position) {
