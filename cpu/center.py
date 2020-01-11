@@ -1,7 +1,7 @@
 import random
 
 from cpu.cpu import Cpu
-from game.transients import Board, Line
+from game.transients import Board
 
 
 class Center(Cpu):
