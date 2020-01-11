@@ -16,6 +16,13 @@ function startGame() {
         .removeClass('o')
         .html('');
 
+    let cpu = $('')
+    $.post( 'api/games', { cpu1: 'center' })
+      .done(function( data ) {
+        gameId = data['id'];
+        console.dir(data);
+      });
+
     // todo contact server to start the game
     // server will decide if the player makes the first move 'x' or not
 }
