@@ -5,7 +5,7 @@ $(function () {
     });
     $('[id^=cell-]').click(function () {
         let position = $(this).attr('id').replace('cell-', '');
-        playMove(position);
+        playMove($(this), position);
     });
 });
 
@@ -20,8 +20,8 @@ function startGame() {
     // server will decide if the player makes the first move 'x' or not
 }
 
-function playMove(position) {
-    if ($(this).hasClass('x') || $(this).hasClass('o')) {
+function playMove(cell, position) {
+    if (cell.hasClass('x') || cell.hasClass('o')) {
         console.log(`invalid move: ${position}`);
         return;
     }
