@@ -17,7 +17,17 @@ class Xavier(Cpu):
             else:
                 return 6
 
+        winning_position = self.find_winning_position(board, player_side)
+        if winning_position:
+            return winning_position
+
+        losing_position = self.find_winning_position(board, opposing_side)
+        if losing_position:
+            return losing_position
+
+
         if board.played_moves_count() == 4:
+
             return 5;
 
         return 5
