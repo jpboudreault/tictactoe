@@ -39,22 +39,43 @@ def games(request):
     return JsonResponse(game_response(new_game))
 
 
-def game(request, id):
-    game = get_object_or_404(Game, pk=id)
-    return JsonResponse({
-    })
+# No CSRF needed, there is no security on the website
+@csrf_exempt
+def move(request, game_id):
+    if not request.method == 'POST':
+        raise Exception('The API only supports POST')
+
+    player_move = request.POST.get('move')
+    if not player_move:
+        raise Exception('Invalid payload, move is mandatory')
+
+    if player_move not in range(9):
+        raise Exception('Invalid move, it must be between 0 and 8')
+
+    existing_game = get_object_or_404(Game, pk=game_id)
+
+    moves = literal_eval(existing_game.moves)
+    if player_move not in moves:  # we should also check that it is the player turn
+        moves.append(player_move)
+
+    existing_game.moves = "%s" % moves
+
+    play_cpu_if_needed(existing_game)
+    existing_game.save()
+
+    return JsonResponse(game_response(existing_game))
 
 
-def game_response(game: Game):
-    board = game_2_board(game)
+def game_response(game_model: Game):
+    board = game_2_board(game_model)
     return {
-        'id': game.id,
-        'cpuCode': game.cpu_code,
-        'cpuFirstPlayer': game.cpu_first_player,
+        'id': game_model.id,
+        'cpuCode': game_model.cpu_code,
+        'cpuFirstPlayer': game_model.cpu_first_player,
         'winningSide': board.get_winning_side(),
         'gameOver': board.is_game_over(),
         'data': board.data,
-        'moves': literal_eval(game.moves),
+        'moves': literal_eval(game_model.moves),
     }
 
 
