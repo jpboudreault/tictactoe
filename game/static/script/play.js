@@ -17,16 +17,12 @@ function startGame() {
         .html('');
 
     let cpu = $('#game-cpu').val();
-    // server will decide if the player makes the first move 'x' or not
+
+    // server will decide if the cpu makes the first move 'x'
     $.post( 'api/games', { cpu1: cpu })
-      .done(function( data ) {
-        gameId = data['id'];
-        data['moves'].forEach(function (move, index) {
-            let side = index % 2 == 0 ? 'x' : 'o';
-            $(`[id^=cell-${move}]`)
-                .addClass(side)
-                .html(side);
-        });
+      .done(function( gameData ) {
+        gameId = gameData['id'];
+        updateGameView(gameData);
       });
 }
 
@@ -36,19 +32,22 @@ function playMove(cell, position) {
         return;
     }
 
-    // todo contact the server with the move
-    // possibly call gameOver()
-    $(`#cell-${position}`)
-        .html('X')
-        .addClass('x');
+    $.post( `api/games/${gameId}/move`, { move: position })
+      .done(function( gameData ) {
+        updateGameView(gameData);
+      });
+}
 
-    $('#game-message')
-        .html('Bien jou&eacute;!')
-        .show()
-        .delay(2000)
-        .slideUp(200, function () {
-            $(this).hide();
+function updateGameView(gameData) {
+        gameData['moves'].forEach(function (move, index) {
+            let side = index % 2 == 0 ? 'x' : 'o';
+            $(`[id^=cell-${move}]`)
+                .addClass(side)
+                .html(side);
         });
+        if (gameData['gameOver']) {
+            gameOver();
+        }
 }
 
 function gameOver() {
