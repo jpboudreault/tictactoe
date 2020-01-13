@@ -45,12 +45,13 @@ def move(request, game_id):
     if not request.method == 'POST':
         raise Exception('The API only supports POST')
 
-    player_move = request.POST.get('move')
-    if not player_move:
+    if not request.POST.get('move'):
         raise Exception('Invalid payload, move is mandatory')
 
+    player_move = int(request.POST.get('move'))
+
     if player_move not in range(9):
-        raise Exception('Invalid move, it must be between 0 and 8')
+        raise Exception('Invalid move, it must be between 0 and 8 got ' + player_move)
 
     existing_game = get_object_or_404(Game, pk=game_id)
 

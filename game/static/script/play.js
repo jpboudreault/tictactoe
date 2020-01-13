@@ -1,4 +1,5 @@
 var gameId = null;
+var isGameOver = false;
 $(function () {
     $('#game-start').click(function () {
         startGame();
@@ -11,10 +12,13 @@ $(function () {
 
 function startGame() {
     gameId = null;
+    isGameOver = false;
+
     $('[id^=cell-]')
         .removeClass('x')
         .removeClass('o')
         .html('');
+    $('#game-message').hide();
 
     let cpu = $('#game-cpu').val();
 
@@ -23,11 +27,19 @@ function startGame() {
       .done(function( gameData ) {
         gameId = gameData['id'];
         updateGameView(gameData);
+        if (!gameData['cpuFirstPlayer']) {
+            $('#game-message').html(`&Agrave; vous de commencer`)
+                .show()
+                .delay(2000)
+                .slideUp(200, function () {
+                    $(this).hide();
+        });
+        }
       });
 }
 
 function playMove(cell, position) {
-    if (cell.hasClass('x') || cell.hasClass('o')) {
+    if (cell.hasClass('x') || cell.hasClass('o') || isGameOver) {
         console.log(`invalid move: ${position}`);
         return;
     }
@@ -46,13 +58,23 @@ function updateGameView(gameData) {
                 .html(side);
         });
         if (gameData['gameOver']) {
-            gameOver();
+            gameOver(gameData);
         }
 }
 
-function gameOver() {
-    result = 'perdu';
-    $('#game-message').html(`Partie termin&ecute;e, vous avez ${result}!`)
+function gameOver(gameData) {
+    isGameOver = true;
+
+    if (!gameData['winningSide'])
+        result = 'fait nul';
+    else if (gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'x')
+        result = 'perdu';
+    else if (!gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'o')
+        result = 'perdu';
+    else
+        result = 'gagn&eacute';
+
+    $('#game-message').html(`Partie termin&eacute;e, vous avez ${result}!`)
         .show()
         .delay(5000)
         .slideUp(200, function () {
