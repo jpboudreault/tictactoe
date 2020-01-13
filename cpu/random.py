@@ -1,3 +1,5 @@
+import random
+
 from .cpu import Cpu
 from .services import *
 from game.transforms import *

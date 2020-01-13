@@ -38,7 +38,7 @@ def games(request):
     # create a game and make cpu play if needed
     cpu_first_player = random.choice([True, False])
     new_game = Game.objects.create(moves="[]", cpu_code=cpu, cpu_first_player=cpu_first_player)
-    play_cpu_if_needed(new_game)
+    play_cpu1_if_needed(new_game)
     new_game.save()
 
     # return board
@@ -55,22 +55,56 @@ def move(request, game_id):
         raise Exception('Invalid payload, move is mandatory')
 
     player_move = int(request.POST.get('move'))
-
     if player_move not in range(9):
-        raise Exception('Invalid move, it must be between 0 and 8 got ' + player_move)
+        raise Exception('Invalid move, it must be between 0 and 8 got ' + str(player_move))
 
     existing_game = get_object_or_404(Game, pk=game_id)
 
-    moves = literal_eval(existing_game.moves)
-    if player_move not in moves:  # we should also check that it is the player turn
-        moves.append(player_move)
+    if existing_game.is_human_turn():
+        existing_game.add_move(move)
 
-    existing_game.moves = "%s" % moves
-
-    play_cpu_if_needed(existing_game)
+    play_cpu1_if_needed(existing_game)
     existing_game.save()
 
     return JsonResponse(game_response(existing_game))
+
+
+@csrf_exempt
+def simulate(request):
+    if not request.method == 'POST':
+        raise Exception('The API only supports POST')
+
+    cpu1 = get_cpu(request.POST.get('cpu1'))
+    cpu2 = get_cpu(request.POST.get('cpu2'))
+
+    games_response = []
+    for i in range(20):
+        cpu_first_player = random.choice([True, False])
+        new_game = Game.objects.create(moves="[]", cpu_code=cpu1, cpu2_code=cpu2, cpu_first_player=cpu_first_player)
+        new_game.save()
+
+        try:
+            while not game_2_board(new_game).is_game_over():
+                if new_game.is_first_player_turn() != new_game.cpu_first_player:
+                    cpu_turn = cpu2
+                else:
+                    cpu_turn = cpu1
+
+                board = game_2_board(new_game)
+
+                if new_game.is_first_player_turn():
+                    move = cpu_turn.play(board, 'x', 'o')
+                else:
+                    move = cpu_turn.play(board, 'o', 'x')
+
+                new_game.add_move(move)
+        except:
+            print("An exception occurred")
+
+        new_game.save()
+        games_response.append(game_response(new_game))
+
+    return JsonResponse(games_response)
 
 
 def game_response(game_model: Game):
@@ -78,54 +112,10 @@ def game_response(game_model: Game):
     return {
         'id': game_model.id,
         'cpuCode': game_model.cpu_code,
+        'cpu2Code': game_model.cpu2_code,
         'cpuFirstPlayer': game_model.cpu_first_player,
         'winningSide': board.get_winning_side(),
         'gameOver': board.is_game_over(),
         'data': board.data,
-        'moves': literal_eval(game_model.moves),
+        'moves': game_model.get_moves(),
     }
-
-
-def simulation(request):
-    cpu1 = get_cpu(request.GET.get('cpu1', 'random'))
-    cpu2 = get_cpu(request.GET.get('cpu2', 'random'))
-
-    data = [' '] * 9
-    moves = []
-    first_player = random.choice([cpu1, cpu2])
-
-    while True:
-        board = Board(data)
-        if board.is_game_over():
-            if board.get_winning_side() == 'x':
-                print('> Game over! Winner is %s <' % cpu1.name())
-            else:
-                print('> Game over! Winner is %s <' % cpu2.name())
-
-            print('History: %s' % moves)
-            break
-
-        if len(moves) % 2 == 0:
-            player = first_player
-            side = 'x'
-            other_side = 'o'
-        else:
-            player = [value for value in [cpu1, cpu2] if value not in [first_player]][0]
-            side = 'o'
-            other_side = 'x'
-
-        move = player.play(board, side, other_side)
-
-        if data[move] != ' ':
-            raise Exception('Illegal move from %s, history: %s' % (player.name(), moves))
-
-        data[move] = side
-        moves.append(move)
-
-    return JsonResponse({
-        'cpu1Code': cpu1.name(),
-        'cpu2Code': cpu2.name(),
-        'winningSide': board.get_winning_side(),
-        'data': board.data,
-        'moves': moves,
-    })
