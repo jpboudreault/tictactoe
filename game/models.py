@@ -6,3 +6,4 @@ class Game(models.Model):
     cpu_code = models.CharField(max_length=100)
     cpu_first_player = models.BooleanField()
     cpu2_code = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
