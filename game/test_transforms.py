@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 
-from game.transients import Board
+from game.transforms import Board
 
 
 def sample_input():
@@ -11,7 +11,7 @@ def sample_input():
     ]
 
 
-class GameTest(SimpleTestCase):
+class TransformsTest(SimpleTestCase):
 
     def test_get_rows(self):
         lines = Board(sample_input()).get_rows()

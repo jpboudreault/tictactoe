@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 
 from cpu.random import Random
-from game.transients import Board
+from game.transforms import Board
 
 
 def sample_input():

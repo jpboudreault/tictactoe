@@ -1,5 +1,5 @@
 from cpu.cpu import Cpu
-from game.transients import Board
+from game.transforms import Board
 
 
 class Xavier(Cpu):
@@ -25,9 +25,7 @@ class Xavier(Cpu):
         if losing_position:
             return losing_position
 
-
         if board.played_moves_count() == 4:
-
             return 5;
 
         return 5

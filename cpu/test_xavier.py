@@ -1,14 +1,14 @@
 from django.test import SimpleTestCase
 
 from cpu.xavier import Xavier
-from game.transients import Board
+from game.transforms import Board
 
 
 def sample_input():
     return
 
 
-class RandomAiTest(SimpleTestCase):
+class XavierTest(SimpleTestCase):
 
     def test_picks_corner_on_start(self):
         data = [

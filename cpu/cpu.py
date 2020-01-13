@@ -1,4 +1,4 @@
-from game.transients import Board
+from game.transforms import Board
 from abc import ABCMeta, abstractmethod
 
 
