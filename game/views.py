@@ -19,6 +19,10 @@ def rules(request):
     return render(request, 'rules.html')
 
 
+def simulate(request):
+    return render(request, 'simulate.html')
+
+
 # No CSRF needed, there is no security on the website
 @csrf_exempt
 def games(request):

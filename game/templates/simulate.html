@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class="mt-5">Simulations</h1>
+<p class="lead">Cette page permet d'executer 20 parties entre 2 ordinateurs.</p>
+<div class="row pt-4">
+    <div class="col-8">
+        <div class="row">
+            <div class="col-4"><span>Ordinateur 1:</span></div>
+            <div class="col-4">
+                <select id="game-cpu1" class="custom-select">
+                    <option value="rand">D&eacute;butant</option>
+                    <option value="center" selected>Interm&eacute;diaire</option>
+                    <option value="xav">Exp&eacute;rimental</option>
+                </select>
+            </div>
+        </div>
+        <div class="row pt-2">
+            <div class="col-4"><span>Ordinateur 2:</span></div>
+            <div class="col-4">
+                <select id="game-cpu2" class="custom-select">
+                    <option value="rand">D&eacute;butant</option>
+                    <option value="center" selected>Interm&eacute;diaire</option>
+                    <option value="xav">Exp&eacute;rimental</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <button id="simulation-start" type="button" class="btn btn-primary co">Simulation</button>
+    </div>
+</div>
+<div class="row pt-4">
+    <table class="table pt-4">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Gagnant</th>
+            <th scope="col">Perdant</th>
+            <th scope="col">Premier joueur</th>
+            <th scope="col">Deuxieme joueur</th>
+            <th scope="col">Partie</th>
+            <th scope="col">Erreur</th>
+        </tr>
+        </thead>
+        <tbody id="simulation-body">
+            <tr class="invisible"></tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{% load static %}
+<script type="text/javascript" src="{% static 'script/simulate.js' %}"></script>
+{% endblock %}
