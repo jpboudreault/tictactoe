@@ -14,4 +14,5 @@ def get_cpu(code):
     elif code == 'center':
         return Center()
     else:
-        raise NotImplementedError("The cpu with the code %s could not be found" % code)
+        msg = "The cpu with the code %s could not be found" % code
+        raise NotImplementedError(msg)

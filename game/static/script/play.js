@@ -66,7 +66,7 @@ function gameOver(gameData) {
     isGameOver = true;
 
     if (!gameData['winningSide'])
-        result = 'fait nul';
+        result = 'fait match nul';
     else if (gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'x')
         result = 'perdu';
     else if (!gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'o')
