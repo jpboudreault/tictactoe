@@ -1,8 +1,9 @@
 import random
 
 from .cpu import Cpu
-from .services import *
-from game.transforms import *
+from .services import find_winning_position, find_matching_positions
+from game.transforms import Board
+
 
 class Center(Cpu):
     def name(self):

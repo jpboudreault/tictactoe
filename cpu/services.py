@@ -1,15 +1,15 @@
-from .center import *
-from .random import *
-from .xavier import *
 from game.transforms import *
 
 
 def get_cpu(code):
     if code == 'rand':
+        from .random import Random
         return Random()
     elif code == 'xav':
+        from .xavier import Xavier
         return Xavier()
     elif code == 'center':
+        from .center import Center
         return Center()
     else:
         msg = "The cpu with the code %s could not be found" % code
