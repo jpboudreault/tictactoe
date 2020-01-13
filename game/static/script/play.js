@@ -1,12 +1,13 @@
 var gameId = null;
 var isGameOver = false;
+
 $(function () {
     $('#game-start').click(function () {
         startGame();
     });
     $('[id^=cell-]').click(function () {
         let position = $(this).attr('id').replace('cell-', '');
-        playMove($(this), position);
+        playPosition($(this), position);
     });
 });
 
@@ -14,6 +15,7 @@ function startGame() {
     gameId = null;
     isGameOver = false;
 
+    // clear the grid & messages
     $('[id^=cell-]')
         .removeClass('x')
         .removeClass('o')
@@ -22,25 +24,26 @@ function startGame() {
 
     let cpu = $('#game-cpu').val();
 
-    // server will decide if the cpu makes the first move 'x'
+    // call server will decide if the cpu makes the first move 'x'
     $.post( 'api/games', { cpu1: cpu })
       .done(function( gameData ) {
         gameId = gameData['id'];
         updateGameView(gameData);
         if (!gameData['cpuFirstPlayer']) {
-            $('#game-message').html(`&Agrave; vous de commencer`)
-                .show()
-                .delay(2000)
-                .slideUp(200, function () {
-                    $(this).hide();
-        });
+            displayMessage(`&Agrave; vous de commencer`, 2000);
         }
       });
 }
 
-function playMove(cell, position) {
+function playPosition(cell, position) {
+    // the game is over or has not started yet, flash the new game button
+    if (!gameId || isGameOver) {
+        flashNewGameButton();
+    }
+
+    // the player clicked an occupied cell
     if (cell.hasClass('x') || cell.hasClass('o') || isGameOver) {
-        console.log(`invalid move: ${position}`);
+        console.log(`Invalid move: ${position}`);
         return;
     }
 
@@ -58,11 +61,11 @@ function updateGameView(gameData) {
                 .html(side);
         });
         if (gameData['gameOver']) {
-            gameOver(gameData);
+            displayGameOver(gameData);
         }
 }
 
-function gameOver(gameData) {
+function displayGameOver(gameData) {
     isGameOver = true;
 
     if (!gameData['winningSide'])
@@ -74,10 +77,27 @@ function gameOver(gameData) {
     else
         result = 'gagn&eacute';
 
-    $('#game-message').html(`Partie termin&eacute;e, vous avez ${result}!`)
+    displayMessage(`Partie termin&eacute;e, vous avez ${result}!`, 5000);
+}
+
+function displayMessage(message, delay) {
+    $('#game-message').html(message)
         .show()
-        .delay(5000)
-        .slideUp(200, function () {
+        .delay(delay*1000)
+        .slideUp(function () {
             $(this).hide();
+        });
+}
+
+function flashNewGameButton() {
+    $('#game-start')
+        .addClass('btn-outline-primary')
+        .removeClass('btn-primary')
+        .delay(150)
+        .queue(function(){
+            $(this)
+                .removeClass('btn-outline-primary')
+                .addClass('btn-primary')
+                .dequeue();
         });
 }
