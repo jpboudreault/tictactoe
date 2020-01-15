@@ -1,4 +1,6 @@
-# tictactoe
+![](https://github.com/jpboudreault/tictactoe/workflows/syntax-and-unit-tests/badge.svg)
+
+# Tic Tac Toe X
 Python project for my kid's tic tac toe game
 
 ## setup
