@@ -1,14 +1,17 @@
 $(function () {
     $('#simulation-start').click(function () {
+        $('tr.added').remove();
         startSimulations();
     });
 });
 
 function startSimulations() {
-    let cpu1 = $('#game-cpu1').val();
-    let cpu2 = $('#game-cpu2').val();
+    let elemCpu1 = $('#game-cpu1');
+    let elemCpu2 = $('#game-cpu2');
+    let cpu1 = elemCpu1.find("option:selected").text();
+    let cpu2 = elemCpu2.find("option:selected").text();
 
-    $.post('api/games/runSimulation', {cpu1: cpu1, cpu2: cpu2})
+    $.post('api/games/runSimulation', {cpu1: elemCpu1.val(), cpu2: elemCpu2.val()})
         .done(function (gamesData) {
             let html = '';
             // #, Winner, Loser, 1st player, 2nd player, Game, Error
@@ -32,12 +35,19 @@ function startSimulations() {
                 }
                 let winner = '-';
                 let looser = '-';
-                if (game['winningSide']) {
-                    winner = game['winningSide'] === 'x' ? cpu1 : cpu2;
-                    looser = game['winningSide'] === 'o' ? cpu1 : cpu2;
+                let first = cpu1;
+                let second = cpu2;
+                if (!game['cpuFirstPlayer']) {
+                    first = cpu2;
+                    second = cpu1;
                 }
-                let columns = [game['id'], winner, looser, cpu1, cpu2, board.join(''), !game['gameOver']];
-                html += ('<tr><td>' + columns.join('</td><td>') + '</td></tr>')
+                if (game['winningSide']) {
+                    winner = game['winningSide'] === 'x' ? first : second;
+                    looser = game['winningSide'] === 'o' ? first : second;
+                }
+                errored = game['gameOver'] ? 'Non' : 'Oui'
+                let columns = [game['id'], winner, looser, first, second, board.join(''), errored];
+                html += ('<tr class="added"><td>' + columns.join('</td><td>') + '</td></tr>')
             }
             $('#simulation-body tr:last').after(html);
         });
