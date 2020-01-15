@@ -39,6 +39,7 @@ function playPosition(cell, position) {
     // the game is over or has not started yet, flash the new game button
     if (!gameId || isGameOver) {
         flashNewGameButton();
+        return;
     }
 
     // the player clicked an occupied cell

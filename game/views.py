@@ -61,7 +61,7 @@ def move(request, game_id):
     existing_game = get_object_or_404(Game, pk=game_id)
 
     if existing_game.is_human_turn():
-        existing_game.add_move(move)
+        existing_game.add_move(player_move)
 
     play_cpu1_if_needed(existing_game)
     existing_game.save()
