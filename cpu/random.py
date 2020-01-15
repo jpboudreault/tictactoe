@@ -12,7 +12,7 @@ class Random(Cpu):
     def play(self, board: Board, player_side, opposing_side):
         # pick any spot that win, random is stupid but not that much
         winning_position = find_winning_position(board, player_side)
-        if winning_position:
+        if winning_position is not None:
             return winning_position
 
         possible_plays = []

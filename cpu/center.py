@@ -12,12 +12,12 @@ class Center(Cpu):
     def play(self, board: Board, player_side, opposing_side):
         # pick any spot that win
         winning_position = find_winning_position(board, player_side)
-        if winning_position:
+        if winning_position is not None:
             return winning_position
 
         # pick any spot that would make the opponent win
         losing_position = find_winning_position(board, opposing_side)
-        if losing_position:
+        if losing_position is not None:
             return losing_position
 
         # pick middle

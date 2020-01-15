@@ -4,9 +4,9 @@ from cpu.services import *
 
 def game_2_board(game: Game):
     # go from a list of moves to a data array ['x', ' ', 'o', ...]
-    moves = literal_eval(game.moves)
     data = [' '] * 9
-    for num, move in enumerate(moves, start=0):
+
+    for num, move in enumerate(game.get_moves(), start=0):
         data[move] = 'x' if num % 2 == 0 else 'o'
 
     return Board(data)

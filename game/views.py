@@ -21,8 +21,8 @@ def rules(request):
     return render(request, 'rules.html')
 
 
-def simulate(request):
-    return render(request, 'simulate.html')
+def simulation(request):
+    return render(request, 'simulation.html')
 
 
 # No CSRF needed, there is no security on the website
@@ -70,17 +70,19 @@ def move(request, game_id):
 
 
 @csrf_exempt
-def simulate(request):
+def run_simulation(request):
     if not request.method == 'POST':
         raise Exception('The API only supports POST')
 
-    cpu1 = get_cpu(request.POST.get('cpu1'))
-    cpu2 = get_cpu(request.POST.get('cpu2'))
+    code1 = request.POST.get('cpu1')
+    cpu1 = get_cpu(code1)
+    code2 = request.POST.get('cpu2')
+    cpu2 = get_cpu(code2)
 
     games_response = []
     for i in range(20):
         cpu_first_player = random.choice([True, False])
-        new_game = Game.objects.create(moves="[]", cpu_code=cpu1, cpu2_code=cpu2, cpu_first_player=cpu_first_player)
+        new_game = Game.objects.create(moves="[]", cpu_code=code1, cpu2_code=code2, cpu_first_player=cpu_first_player)
         new_game.save()
 
         try:
@@ -93,18 +95,18 @@ def simulate(request):
                 board = game_2_board(new_game)
 
                 if new_game.is_first_player_turn():
-                    move = cpu_turn.play(board, 'x', 'o')
+                    cpu_move = cpu_turn.play(board, 'x', 'o')
                 else:
-                    move = cpu_turn.play(board, 'o', 'x')
+                    cpu_move = cpu_turn.play(board, 'o', 'x')
 
-                new_game.add_move(move)
-        except:
-            print("An exception occurred")
+                new_game.add_move(cpu_move)
+        except Exception as e:
+            print("An exception occurred: " + str(e))
 
         new_game.save()
         games_response.append(game_response(new_game))
 
-    return JsonResponse(games_response)
+    return JsonResponse(games_response, safe=False)
 
 
 def game_response(game_model: Game):

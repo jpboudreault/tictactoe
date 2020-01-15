@@ -19,11 +19,11 @@ class Xavier(Cpu):
                 return 6
 
         winning_position = find_winning_position(board, player_side)
-        if winning_position:
+        if winning_position is not None:
             return winning_position
 
         losing_position = find_winning_position(board, opposing_side)
-        if losing_position:
+        if losing_position is not None:
             return losing_position
 
         if board.played_moves_count() == 4:

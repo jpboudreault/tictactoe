@@ -15,7 +15,8 @@ class Game(models.Model):
             print("Move " + move + " already recorded in game " + self.id)
             return
 
-        self.moves = "%s" % moves_list.append(move)
+        moves_list.append(move)
+        self.moves = str(moves_list)
 
     def get_moves(self):
         return literal_eval(self.moves)
