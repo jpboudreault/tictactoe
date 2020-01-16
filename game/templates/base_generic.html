@@ -3,6 +3,11 @@
 <head>
     {% block title %}<title>Tic Tac Toe X</title>{% endblock %}
     {% load static %}
+    {% load bootstrap4 %}
+    {% bootstrap_javascript jquery='full' %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script type="text/javascript" src="{% static 'script/base.js' %}"></script>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
 </head>
 <body class="d-flex flex-column h-100">
@@ -41,12 +46,6 @@
     </div>
 </footer>
 
-{# Load CSS and JavaScript #}
-{% load bootstrap4 %}
-{% bootstrap_javascript jquery='full' %}
-{% bootstrap_css %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<script type="text/javascript" src="{% static 'script/base.js' %}"></script>
 {% block extra_scripts %}<!-- to be replaced --> {% endblock %}
 </body>
 </html>

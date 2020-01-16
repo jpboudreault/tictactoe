@@ -71,9 +71,9 @@ function displayGameOver(gameData) {
 
     if (!gameData['winningSide'])
         result = 'fait match nul';
-    else if (gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'x')
+    else if (gameData['cpuFirstPlayer'] && gameData['winningSide'] === 'x')
         result = 'perdu';
-    else if (!gameData['cpuFirstPlayer'] && gameData['winningSide'] == 'o')
+    else if (!gameData['cpuFirstPlayer'] && gameData['winningSide'] === 'o')
         result = 'perdu';
     else
         result = 'gagn&eacute';
@@ -84,7 +84,7 @@ function displayGameOver(gameData) {
 function displayMessage(message, delay) {
     $('#game-message').html(message)
         .show()
-        .delay(delay * 1000)
+        .delay(delay)
         .slideUp(function () {
             $(this).hide();
         });
