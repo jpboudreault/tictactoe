@@ -1,9 +1,6 @@
 main > .container {
   padding: 60px 15px 0;
 }
-p {
-    text-align: justify;
-}
 .navbar-brand {
     text-transform: uppercase;
     font-size: 2rem;
@@ -16,6 +13,9 @@ p {
 }
 
 /* Related to the game */
+#game-message {
+    margin-left: -15px;
+}
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
