@@ -12,7 +12,7 @@ class Game(models.Model):
     def add_move(self, move):
         moves_list = self.get_moves()
         if move in moves_list:
-            print("Move " + move + " already recorded in game " + self.id)
+            print("Move %s already recorded in game %s" % (move, self.id))
             return
 
         moves_list.append(move)
