@@ -4,7 +4,6 @@ from cpu.center import Center
 from game.transforms import Board
 
 
-
 class CenterAiTest(SimpleTestCase):
 
     def test_picks_center(self):
