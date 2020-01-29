@@ -99,7 +99,7 @@ def run_simulation(request):
                 else:
                     cpu_move = cpu_turn.play(board, 'o', 'x')
 
-                new_game.add_move(cpu_move)
+                new_game.add_move(cpu_move, True)
         except Exception as e:
             print("An exception occurred: " + str(e))
 

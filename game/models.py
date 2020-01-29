@@ -9,11 +9,14 @@ class Game(models.Model):
     cpu2_code = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def add_move(self, move):
+    def add_move(self, move, raise_illegal_move=False):
         moves_list = self.get_moves()
         if move in moves_list:
-            print("Move %s already recorded in game %s" % (move, self.id))
-            return
+            if raise_illegal_move:
+                raise RuntimeError("Move %s already recorded in game %s" % (move, self.id))
+            else:
+                print("Move %s already recorded in game %s" % (move, self.id))
+                return
 
         moves_list.append(move)
         self.moves = str(moves_list)
