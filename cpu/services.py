@@ -5,9 +5,9 @@ def get_cpu(code):
     if code == 'rand':
         from .random import Random
         return Random()
-    elif code == 'xav':
-        from .xavier import Xavier
-        return Xavier()
+    elif code == 'exp':
+        from .experimental import Experimental
+        return Experimental()
     elif code == 'center':
         from .center import Center
         return Center()

@@ -1,9 +1,11 @@
+import random
+
 from cpu.cpu import Cpu
 from game.transforms import Board
 from .services import find_winning_position
 
 
-class Xavier(Cpu):
+class Experimental(Cpu):
     def name(self):
         return 'Xavier''s AI 1.0'
 
@@ -38,7 +40,12 @@ class Xavier(Cpu):
                 return 8
             else:
                 return 4
-        if board.played_moves_count() == 3:
-            return 5
+#        if board.played_moves_count() == 3:
+#            if board.data[4] == player_side
 
-        return 5
+        possible_plays = []
+        for i in range(9):
+            if board.data[i] == ' ':
+                possible_plays.append(i)
+
+        return random.choice(possible_plays)

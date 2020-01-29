@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 
-from cpu.xavier import Xavier
+from cpu.experimental import Experimental
 from game.transforms import Board
 
 
@@ -8,7 +8,7 @@ def sample_input():
     return
 
 
-class XavierTest(SimpleTestCase):
+class ExperimentalTest(SimpleTestCase):
 
     def test_picks_corner_on_start(self):
         data = [
@@ -16,7 +16,7 @@ class XavierTest(SimpleTestCase):
             ' ', ' ', ' ',
             ' ', ' ', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'x', 'o')
         self.assertEquals(move, 0)
 
@@ -26,7 +26,7 @@ class XavierTest(SimpleTestCase):
             ' ', 'o', ' ',
             ' ', ' ', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'x', 'o')
         self.assertEquals(move, 8)
 
@@ -36,7 +36,7 @@ class XavierTest(SimpleTestCase):
             ' ', ' ', ' ',
             ' ', ' ', 'o',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'x', 'o')
         self.assertEquals(move, 6)
 
@@ -46,7 +46,7 @@ class XavierTest(SimpleTestCase):
             ' ', ' ', ' ',
             'x', ' ', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'x', 'o')
         self.assertEquals(move, 3)
 
@@ -56,7 +56,7 @@ class XavierTest(SimpleTestCase):
             'o', ' ', 'o',
             ' ', 'x', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'x', 'o')
         self.assertEquals(move, 4)
 
@@ -66,7 +66,7 @@ class XavierTest(SimpleTestCase):
             ' ', ' ', ' ',
             ' ', ' ', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'o', 'x')
         self.assertEquals(move, 4)
 
@@ -76,6 +76,6 @@ class XavierTest(SimpleTestCase):
             ' ', 'x', ' ',
             ' ', ' ', ' ',
         ]
-        cpu = Xavier()
+        cpu = Experimental()
         move = cpu.play(Board(data), 'o', 'x')
         self.assertEquals(move, 8)
