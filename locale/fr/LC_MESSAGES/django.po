@@ -1,0 +1,19 @@
+#: game/templates/base_generic.html:25
+msgid "About"
+msgstr "&Agrave; propos"
+
+#: game/templates/base_generic.html:28
+msgid "Rules"
+msgstr "R&egrave;gles"
+
+#: game/templates/base_generic.html:31
+msgid "Play"
+msgstr "Jouer"
+
+#: tictactoe/settings.py:86
+msgid "French"
+msgstr "Francais"
+
+#: tictactoe/settings.py:87
+msgid "English"
+msgstr "Anglais"

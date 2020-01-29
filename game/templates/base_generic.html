@@ -7,6 +7,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0622fa2c00.js" crossorigin="anonymous"></script>
     {% load static %}
+    {% load i18n %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script type="text/javascript" src="{% static 'script/base.js' %}"></script>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
@@ -19,15 +20,17 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     {% url rules as rules_url %}
+                    {% language 'fr' %}
                     <li class="nav-item" data="about">
-                        <a class="nav-link" href="{% url 'about' %}">&Agrave; propos</a>
+                        <a class="nav-link" href="{% url 'about' %}">{% trans 'About' %}</a>
                     </li>
                     <li class="nav-item" data="rules">
-                        <a class="nav-link" href="{% url 'rules' %}">R&egrave;gles</a>
+                        <a class="nav-link" href="{% url 'rules' %}">{% trans 'Rules' %}</a>
                     </li>
                     <li class="nav-item" data="play">
-                        <a class="nav-link" href="{% url 'play' %}">Jouer</a>
+                        <a class="nav-link" href="{% url 'play' %}">{% trans 'Play' %}</a>
                     </li>
+                    {% endlanguage %}
                 </ul>
             </div>
         </div>

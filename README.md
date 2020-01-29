@@ -12,3 +12,8 @@ Adjust the following based on your environment
 1. pip install -r requirements.txt
 1. python manage.py migrate
 1. python manage.py runserver
+
+## notes
+How to generate the language files  
+python manage.py makemessages -a -i venvsett
+python3 manage.py compilemessages -i venv
