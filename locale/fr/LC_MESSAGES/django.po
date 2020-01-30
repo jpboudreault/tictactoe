@@ -1,6 +1,43 @@
-#: game/templates/base_generic.html:25
+#: game/templates/about.html:5 game/templates/base_generic.html:25
 msgid "About"
 msgstr "&Agrave; propos"
+
+#: game/templates/about.html:6
+#, fuzzy
+#| msgid ""
+#| "This project is the result of the work of a dad and his son. He helped "
+#| "understand the programming concepts and the Python language. It was "
+#| "presented at a career day at an high school. Feel free to change it and "
+#| "redistribute any portion of it."
+msgid ""
+"This project is the result of the work of a dad and his son. It helped "
+"understand the programming concepts and learn the Python language. It was "
+"presented at a career day. Feel free to change or redistribute any portion "
+"of it."
+msgstr ""
+"Ce projet est le fruit de la collaboration d'un papa et de son fils. Il a "
+"servi a apprendre la programmation et le language Python. Il a &eacute;"
+"t&eacute; pr&eacute;sent&eacute; &agrave; une classe de 5e ann&eacute;e."
+
+#: game/templates/about.html:8
+msgid "Check the rules of the game"
+msgstr "Voir les r&egrave;gles du jeu"
+
+#: game/templates/about.html:9
+msgid "See the source code on GitHub"
+msgstr "Voir le code sur GitHub"
+
+#: game/templates/about.html:11
+msgid "See also a small game built using block programming."
+msgstr ""
+"Voir &eacute;galement un petit jeu fait &agrave; l'aide de la programmation "
+"par block."
+
+#: game/templates/about.html:14
+#, fuzzy
+#| msgid "Play the Scratch game on code.org"
+msgid "Play the game on code.org"
+msgstr "Jouer au projet Scratch sur code.org"
 
 #: game/templates/base_generic.html:28
 msgid "Rules"
@@ -10,10 +47,14 @@ msgstr "R&egrave;gles"
 msgid "Play"
 msgstr "Jouer"
 
-#: tictactoe/settings.py:86
+#: game/templates/base_generic.html:49
+msgid "Done by Jean-Philippe and Xavier Boudreault"
+msgstr "Fait par Jean-Philippe et Xavier Boudreault"
+
+#: tictactoe/settings.py:85
 msgid "French"
 msgstr "Francais"
 
-#: tictactoe/settings.py:87
+#: tictactoe/settings.py:86
 msgid "English"
 msgstr "Anglais"

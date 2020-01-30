@@ -1,19 +1,17 @@
 {% extends "base_generic.html" %}
 
+{% load i18n %}
 {% block content %}
-    <h1 class="mt-5">&Agrave; propos</h1>
-    <p class="lead">Ce projet est le fruit de la collaboration d'un papa et de son fils. Il a servi a apprendre la
-        programmation et le language Python.
-        Il a ete pr&eacute;sent&eacute; &agrave; une classe de 5e ann&eacute;e.</p>
+    <h1 class="mt-5">{% trans 'About' %}</h1>
+    <p class="lead">{% trans "This project is the result of the work of a dad and his son. It helped understand the programming concepts and learn the Python language. It was presented at a career day. Feel free to change or redistribute any portion of it." %}</p>
     <ul>
-        <li><a href="{% url 'rules' %}">Voir les r&egrave;gles du jeu</a></li>
-        <li><a href="https://github.com/jpboudreault/tictactoe">Voir le code sur GitHub</a></li>
+        <li><a href="{% url 'rules' %}">{% trans 'Check the rules of the game' %}</a></li>
+        <li><a href="https://github.com/jpboudreault/tictactoe">{% trans 'See the source code on GitHub' %}</a></li>
     </ul>
-    <p>Voir &eacute;galement un petit jeu en Scratch avec de la programmation par block.</p>
+    <p>{% trans 'See also a small game built using block programming.' %}</p>
     <ul>
         <li>
-            <a href="https://studio.code.org/projects/flappy/JfkO0omPJFc4ZZGGPbepDTOeuOIpuXsOrllLT0HAoaY">Jouer au
-                projet Scratch sur code.org</a>
+            <a href="https://studio.code.org/projects/flappy/JfkO0omPJFc4ZZGGPbepDTOeuOIpuXsOrllLT0HAoaY">{% trans 'Play the game on code.org' %}</a>
         </li>
     </ul>
 {% endblock %}
