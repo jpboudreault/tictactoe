@@ -5,6 +5,7 @@ from game.transforms import Board
 from .services import find_winning_position
 
 
+# Author: Xavier
 class Experimental(Cpu):
     def name(self):
         return 'Xavier''s AI 1.0'
