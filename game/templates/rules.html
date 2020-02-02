@@ -1,16 +1,15 @@
 {% extends "base_generic.html" %}
 
+{% load i18n %}
 {% block content %}
-    <h1 class="mt-5">Les r&egrave;gles</h1>
-    <p class="lead">Deux joueurs s'affrontent. Ils doivent remplir chacun &agrave; leur tour une case de la grille avec
-        le symbole qui leur est attribu&eacute; : <span class="o">O</span> ou <span class="x">X</span>. Le gagnant est
-        celui qui arrive &agrave; aligner trois symboles identiques, horizontalement, verticalement ou en diagonale.
-        Dans TIC TAC T<span class="o">O</span>E <span class="x">X</span>, le joueur avec les <span class="x">X</span>
-        effectue le premier coup de la partie.</p>
+    <h1 class="mt-5">{% trans 'The Rules' %}</h1>
+    <p class="lead">
+        {% trans 'Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3x3 grid. Two players compete to succeed in placing three of their marks in horizontal, vertical, or diagonal row. In TIC TAC T<span class="o">O</span>E <span class="x">X</span>, the player with the <span class="x">X</span> plays the first move in the game.' %}
+    </p>
     <div class="alert alert-warning" role="alert">
-        Note aux joueurs: Xavier affirme que son ordinateur Exp&eacute;rimental sera imbattable.
+        {% trans 'Note to players: Xavier affirms that his Experimental computer cannot be beaten' %}
     </div>
-    <p><a href="{% url 'play' %}">Accepter et jouer</a></p>
+    <p><a href="{% url 'play' %}">{% trans 'Accept and Play' %}</a></p>
 {% endblock %}
 
 {% block extra_scripts %}

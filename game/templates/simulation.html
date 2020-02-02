@@ -1,33 +1,34 @@
 {% extends "base_generic.html" %}
 
+{% load i18n %}
 {% block content %}
-<h1 class="mt-5">Simulations</h1>
-<p class="lead">Cette page permet d'executer 20 parties entre 2 ordinateurs.</p>
+<h1 class="mt-5">{% trans 'Simulations' %}</h1>
+<p class="lead">{% trans 'This tool allows to execute 20 games between 2 computers.' %}</p>
 <div class="row pt-4">
     <div class="col-8">
         <div class="row">
-            <div class="col-4"><span>Ordinateur 1:</span></div>
+            <div class="col-4"><span>{% trans 'Computer' %} 1:</span></div>
             <div class="col-4">
                 <select id="game-cpu1" class="custom-select">
-                    <option value="rand">D&eacute;butant</option>
-                    <option value="center" selected>Interm&eacute;diaire</option>
-                    <option value="exp">Exp&eacute;rimental</option>
+                    <option value="rand">{% trans 'Beginner' %}</option>
+                    <option value="center" selected>{% trans 'Intermediate' %}</option>
+                    <option value="exp">{% trans 'Experimental' %}</option>
                 </select>
             </div>
         </div>
         <div class="row pt-2">
-            <div class="col-4"><span>Ordinateur 2:</span></div>
+            <div class="col-4"><span>{% trans 'Computer' %} 2:</span></div>
             <div class="col-4">
                 <select id="game-cpu2" class="custom-select">
-                    <option value="rand">D&eacute;butant</option>
-                    <option value="center" selected>Interm&eacute;diaire</option>
-                    <option value="xav">Exp&eacute;rimental</option>
+                    <option value="rand">{% trans 'Beginner' %}</option>
+                    <option value="center" selected>{% trans 'Intermediate' %}</option>
+                    <option value="xav">{% trans 'Experimental' %}</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="col-4">
-        <button id="simulation-start" type="button" class="btn btn-primary co">Simulation</button>
+        <button id="simulation-start" type="button" class="btn btn-primary co">{% trans 'Simulation' %}</button>
     </div>
 </div>
 <div class="row pt-4">
@@ -35,12 +36,12 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Gagnant</th>
-            <th scope="col">Perdant</th>
-            <th scope="col">Premier joueur</th>
-            <th scope="col">Deuxieme joueur</th>
-            <th scope="col">Partie</th>
-            <th scope="col">Erreur</th>
+            <th scope="col">{% trans 'Winner' %}</th>
+            <th scope="col">{% trans 'Looser' %}</th>
+            <th scope="col">{% trans 'First Player' %}</th>
+            <th scope="col">{% trans 'Second Player' %}</th>
+            <th scope="col">{% trans 'Game' %}</th>
+            <th scope="col">{% trans 'Bugged?' %}</th>
         </tr>
         </thead>
         <tbody id="simulation-body">

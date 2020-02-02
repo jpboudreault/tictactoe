@@ -1,7 +1,8 @@
 {% extends "base_generic.html" %}
 
+{% load i18n %}
 {% block content %}
-<h1 class="mt-5">Jouer &agrave; TIC TAC T<span class="o">O</span>E <span class="x">X</span></h1>
+<h1 class="mt-5">{% trans 'Play' %} TIC TAC T<span class="o">O</span>E <span class="x">X</span></h1>
 <div class="row lead pt-4">
     <div class="col-8">
         <div class="grid-container">
@@ -27,17 +28,17 @@
         <div class="row">
             <div class="w-50">
                 <div class="row">
-                    <span>Ordinateur:</span>
+                    <span>{% trans 'Computer' %}:</span>
                 </div>
                 <div class="row pt-2">
                     <select id="game-cpu" class="custom-select">
-                        <option value="rand">D&eacute;butant</option>
-                        <option value="center" selected>Interm&eacute;diaire</option>
-                        <option value="exp">Exp&eacute;rimental</option>
+                        <option value="rand">{% trans 'Beginner' %}</option>
+                        <option value="center" selected>{% trans 'Intermediate' %}</option>
+                        <option value="exp">{% trans 'Experimental' %}</option>
                     </select>
                 </div>
                 <div class="row pt-4">
-                    <button id="game-start" type="button" class="btn btn-primary co">Nouvelle partie</button>
+                    <button id="game-start" type="button" class="btn btn-primary co">{% trans 'New Game' %}</button>
                 </div>
             </div>
             <div class="w-50"></div>
