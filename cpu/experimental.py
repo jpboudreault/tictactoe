@@ -41,8 +41,11 @@ class Experimental(Cpu):
                 return 8
             else:
                 return 4
-#        if board.played_moves_count() == 3:
-#            if board.data[4] == player_side
+        if board.played_moves_count() == 3:
+            if board.data[4] == player_side and board.data[1] == ' ':
+                return 1
+            if board.data[4] == opposing_side and board.data[0] == opposing_side :
+                return 2
 
         possible_plays = []
         for i in range(9):

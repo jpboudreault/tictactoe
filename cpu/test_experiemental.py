@@ -79,3 +79,14 @@ class ExperimentalTest(SimpleTestCase):
         cpu = Experimental()
         move = cpu.play(Board(data), 'o', 'x')
         self.assertEquals(move, 8)
+
+
+    def test_pick_1(self):
+        data = [
+            'x', ' ', ' ',
+            ' ', 'o', ' ',
+            ' ', ' ', 'x',
+        ]
+        cpu = Experimental()
+        move = cpu.play(Board(data), 'o', 'x')
+        self.assertEquals(move, 1)
