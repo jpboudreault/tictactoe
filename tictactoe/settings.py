@@ -80,7 +80,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = os.getenv('LANGUAGE_CODE')
+if not LANGUAGE_CODE:
+    LANGUAGE_CODE = 'en'
+
 LANGUAGES = [
     ('fr', _('French')),
     ('en', _('English')),
