@@ -1,14 +1,8 @@
-#: game/templates/about.html:5 game/templates/base_generic.html:25
+#: game/templates/about.html:5 game/templates/base_generic.html:24
 msgid "About"
 msgstr "&Agrave; propos"
 
 #: game/templates/about.html:6
-#, fuzzy
-#| msgid ""
-#| "This project is the result of the work of a dad and his son. He helped "
-#| "understand the programming concepts and the Python language. It was "
-#| "presented at a career day at an high school. Feel free to change it and "
-#| "redistribute any portion of it."
 msgid ""
 "This project is the result of the work of a dad and his son. It helped "
 "understand the programming concepts and learn the Python language. It was "
@@ -34,22 +28,112 @@ msgstr ""
 "par block."
 
 #: game/templates/about.html:14
-#, fuzzy
-#| msgid "Play the Scratch game on code.org"
 msgid "Play the game on code.org"
 msgstr "Jouer au projet Scratch sur code.org"
 
-#: game/templates/base_generic.html:28
+#: game/templates/base_generic.html:27
 msgid "Rules"
 msgstr "R&egrave;gles"
 
-#: game/templates/base_generic.html:31
+#: game/templates/base_generic.html:30 game/templates/play.html:5
 msgid "Play"
 msgstr "Jouer"
 
-#: game/templates/base_generic.html:49
+#: game/templates/base_generic.html:47
 msgid "Done by Jean-Philippe and Xavier Boudreault"
 msgstr "Fait par Jean-Philippe et Xavier Boudreault"
+
+#: game/templates/play.html:31 game/templates/simulation.html:10
+#: game/templates/simulation.html:20
+msgid "Computer"
+msgstr "Ordinateur"
+
+#: game/templates/play.html:35 game/templates/simulation.html:13
+#: game/templates/simulation.html:23
+msgid "Beginner"
+msgstr "D&eacute;butant"
+
+#: game/templates/play.html:36 game/templates/simulation.html:14
+#: game/templates/simulation.html:24
+msgid "Intermediate"
+msgstr "Interm&eacute;diaire"
+
+#: game/templates/play.html:37 game/templates/simulation.html:15
+#: game/templates/simulation.html:25
+msgid "Experimental"
+msgstr "Exp&eacute;rimental"
+
+#: game/templates/play.html:41
+msgid "New Game"
+msgstr "Nouvelle partie"
+
+#: game/templates/rules.html:5
+msgid "The Rules"
+msgstr "Les r&egrave;gles"
+
+#: game/templates/rules.html:7
+msgid ""
+"Xs and Os is a paper-and-pencil game for two players, X and O, who take "
+"turns marking the spaces in a 3x3 grid. Two players compete to succeed in "
+"placing three of their marks in horizontal, vertical, or diagonal row. In "
+"TIC TAC T<span class=\"o\">O</span>E <span class=\"x\">X</span>, the player "
+"with the <span class=\"x\">X</span> plays the first move in the game."
+msgstr ""
+"Deux joueurs s'affrontent. Ils doivent remplir chacun &agrave; leur tour une "
+"case de la grille avec le symbole qui leur est attribu&eacute; : <span class="
+"\"o\">O</span> ou <span class=\"x\">X</span>. Le gagnant est celui qui "
+"arrive &agrave; aligner trois symboles identiques, horizontalement, "
+"verticalement ou en diagonale. Dans TIC TAC T<span class=\"o\">O</span>E "
+"<span class=\"x\">X</span>, le joueur avec les <span class=\"x\">X</span> "
+"effectue le premier coup de la partie."
+
+#: game/templates/rules.html:10
+msgid ""
+"Note to players: Xavier affirms that his Experimental computer cannot be "
+"beaten"
+msgstr ""
+"Note aux joueurs: Xavier affirme que son ordinateur Exp&eacute;rimental est "
+"imbattable."
+
+#: game/templates/rules.html:12
+msgid "Accept and Play"
+msgstr "Accepter et jouer"
+
+#: game/templates/simulation.html:5
+msgid "Simulations"
+msgstr "Simulations"
+
+#: game/templates/simulation.html:6
+msgid "This tool allows to execute 20 games between 2 computers."
+msgstr "Cette page permet d'executer 20 parties entre 2 ordinateurs."
+
+#: game/templates/simulation.html:31
+msgid "Simulation"
+msgstr "Simulation"
+
+#: game/templates/simulation.html:39
+msgid "Winner"
+msgstr "Gagnant"
+
+#: game/templates/simulation.html:40
+msgid "Looser"
+msgstr "Perdant"
+
+#: game/templates/simulation.html:41
+msgid "First Player"
+msgstr "Premier joueur"
+
+#: game/templates/simulation.html:42
+msgid "Second Player"
+msgstr "Deuxi&eagrave;me joueur"
+
+#: game/templates/simulation.html:43
+msgid "Game"
+msgstr "Partie"
+
+#: game/templates/simulation.html:44
+msgid "Bugged?"
+msgstr "Erreur?"
 
 #: tictactoe/settings.py:85
 msgid "French"
