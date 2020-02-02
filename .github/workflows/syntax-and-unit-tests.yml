@@ -29,4 +29,5 @@ jobs:
         DJANGO_SETTINGS_MODULE: tictactoe.settings
       run: |
         pip install pytest
+        python manage.py migrate
         pytest
